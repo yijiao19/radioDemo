@@ -1,0 +1,19 @@
+﻿Build started 2015/12/16 15:52:07.
+     1>Project "F:\BRDF\shadowmaplab1215_点光源 - 副本\shadowmaplab\glutil\glutil.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\glutil.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(1151,5): warning MSB8012: TargetPath(F:\BRDF\shadowmaplab1215_点光源 - 副本\shadowmaplab\\lib\glutil.lib) does not match the Library's OutputFile property value (F:\BRDF\shadowmaplab1215_点光源 - 副本\shadowmaplab\lib\glutil_Debug.lib). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Lib.OutputFile).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(1153,5): warning MSB8012: TargetName(glutil) does not match the Library's OutputFile property value (glutil_Debug). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Lib.OutputFile).
+       Lib:
+         All outputs are up-to-date.
+         glutil.vcxproj -> F:\BRDF\shadowmaplab1215_点光源 - 副本\shadowmaplab\\lib\glutil.lib
+       FinalizeBuildStatus:
+         Deleting file "Debug\glutil.unsuccessfulbuild".
+         Touching "Debug\glutil.lastbuildstate".
+     1>Done Building Project "F:\BRDF\shadowmaplab1215_点光源 - 副本\shadowmaplab\glutil\glutil.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.03

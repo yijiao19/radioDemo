@@ -1,0 +1,20 @@
+﻿Build started 2015/12/16 15:52:07.
+     1>Project "F:\BRDF\shadowmaplab1215_点光源 - 副本\shadowmaplab\lab6-shadowmaps\OpenGL_Lab6.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\OpenGL_Lab.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+       ManifestResourceCompile:
+         All outputs are up-to-date.
+       Link:
+         All outputs are up-to-date.
+       Manifest:
+         All outputs are up-to-date.
+       FinalizeBuildStatus:
+         Deleting file "Debug\OpenGL_Lab.unsuccessfulbuild".
+         Touching "Debug\OpenGL_Lab.lastbuildstate".
+     1>Done Building Project "F:\BRDF\shadowmaplab1215_点光源 - 副本\shadowmaplab\lab6-shadowmaps\OpenGL_Lab6.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.15

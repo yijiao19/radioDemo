@@ -20,6 +20,7 @@ static bool isdrawtorus = true;
 static float runtime = 0.0f;
 bool specialEvent = false;
 bool pause = false;
+bool keyboardFlag = 0;
 // 设置shader对象 用于绘制场景
 GLuint drawShader;
 // 设置 shadowmap 用于绘制光和阴影
@@ -104,6 +105,19 @@ fclose(f);
 
 static void loadTex();
 
+static void readPix()
+{
+
+	int x=0,y=0;
+	GLfloat *Pixel = new float; 
+	for(x=0;x<511;x++)
+		for(y=0;y<511;y++)
+		{
+			glReadPixels(x,y,1,1,GL_COLOR_INDEX,GL_FLOAT,Pixel);
+			printf("%f",Pixel);
+		}
+
+}
 ////////////////////////////
 //初始化
 ///////////////////////////
@@ -223,33 +237,58 @@ static void drawScene(const Mtx4f &viewMatrix, const Mtx4f &projectionMatrix,
 	float tongguolv = sourcePathData[i][j][2];
 
 	float normalizeFuTong = fuliangdu * tongguolv / 51.767;
+	if(keyboardFlag == 1)
+	{
+		printf("天顶角：%f 波长：%f 辐亮度：%f 通过率%f 归一化：%f\n",lightXAng,lightWaveLength,fuliangdu,tongguolv,normalizeFuTong);
+		keyboardFlag = 0;
+	}
 
 	int loc1 = glGetUniformLocation(drawShader,"fu");  
 	glUniform1f(loc1,normalizeFuTong);  
+
 
 	//清空当前shader
 	glUseProgram( 0 );	
 
 	glDisable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
+
+	char *c;
+	char *string[11]= {"0.0","0.1","0.2","0.3","0.4","0.5","0.6","0.7","0.8","0.9","1.0"};
+
+	for (int i = 0;i<11;i++)
+	{
+		//glColor3f(1.0, 0.0, 0.0);
+		glRasterPos2f(-0.05f+i*0.1f,0.85f);
+		//glutBitmapCharacter( GLUT_BITMAP_8_BY_13, 48+i);
+		for (c = string[i]; *c != '\0'; c++) 
+		{
+			glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_10, *c);
+		}
+
+	}
+
 	glBegin(GL_QUADS);
-	glVertex2f(0,0.9);
-	glTexCoord2f(0.0,0.0);
-
-	glVertex2f(1,0.9);
-	glTexCoord2f(0.0,0.0);
-
-	glVertex2f(1,1);
+	glVertex2f(-0.05,0.9);
 	glTexCoord2f(1,1);
 
-		glVertex2f(0.0,1);
+	glVertex2f(0.95,0.9);
 	glTexCoord2f(1,1);
+
+	glVertex2f(0.95,1);
+	glTexCoord2f(0.0,0.0);
+
+	glVertex2f(-0.05,1);
+	glTexCoord2f(0.0,0.0);
+	
+
 
 
 	glEnd();
 	glEnable(GL_DEPTH_TEST);
 
-}
+}		
+
 
 //////////////////
 //绘制阴影贴图
@@ -441,7 +480,8 @@ void handleSpecialKeys(int key, int x, int y)
 					lightWaveLength  = 400.0;
 				else
 					lightWaveLength -= 10.0f ;
-		printf("%f \n",lightWaveLength); 
+		//printf("%f \n",lightWaveLength); 
+		keyboardFlag = 1;
 		}
 		break;
 	case GLUT_KEY_RIGHT:
@@ -453,7 +493,8 @@ void handleSpecialKeys(int key, int x, int y)
 					lightWaveLength  = 400.0;
 				else
 					lightWaveLength += 10.0f ;
-		printf("%f \n",lightWaveLength); 
+		//printf("%f \n",lightWaveLength); 
+		keyboardFlag = 1;
 		};
 		break;
 	case GLUT_KEY_UP:
@@ -465,7 +506,8 @@ void handleSpecialKeys(int key, int x, int y)
 					lightXAng = 29.9;
 				else
 				lightXAng += 0.01f;
-		printf("%f \n",lightXAng);
+		//printf("%f \n",lightXAng);
+		keyboardFlag = 1;
 		}
 		break;
 	case GLUT_KEY_DOWN:
@@ -478,7 +520,8 @@ void handleSpecialKeys(int key, int x, int y)
 				else
 				lightXAng -= 0.01f ;
 
-		printf("%f \n",lightXAng);
+		//printf("%f \n",lightXAng);
+		keyboardFlag = 1;
 		}
 		break;
 	}
@@ -596,7 +639,10 @@ int main(int argc, char *argv[])
 
 
 	init();
+
 	glutMainLoop();  
+
+	
 
 	return 0;          
 }

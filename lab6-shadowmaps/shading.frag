@@ -34,7 +34,8 @@ void main()
 	intensity = intensity * fu;
 
 	//fragmentColor.rgb = normalize(normal);
-    fragmentColor = texture2D(tex0, vec2(min(0.99,intensity),0.5));
+	fragmentColor = texture2D(tex0, vec2(min(0.99,intensity),0.5));
+   // fragmentColor = texture2D(tex0, vec2(intensity,0.5));
 
    //fragmentColor.rgb = vec3(intensity,intensity,intensity);
 	fragmentColor.a = 1.0;
